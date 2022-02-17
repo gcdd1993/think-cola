@@ -2,7 +2,6 @@ plugins {
     id "java-library"
 }
 dependencies {
-    api 'com.alibaba.cola:cola-component-dto:4.0.0'
-    api 'org.projectlombok:lombok:1.18.16'
-    api 'javax.validation:validation-api:2.0.0.Final'
+    api("com.alibaba.cola:cola-component-dto")
+    api("javax.validation:validation-api")
 }

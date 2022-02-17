@@ -3,6 +3,5 @@ plugins {
 }
 dependencies {
     api project(':think-app')
-    api 'org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test:2.3.4.RELEASE'
+    api("org.springframework.boot:spring-boot-starter-web")
 }

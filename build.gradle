@@ -45,24 +45,22 @@ subprojects { project ->
         compileOnly("org.projectlombok:lombok")
         annotationProcessor("org.projectlombok:lombok")
         annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
-        testImplementation("org.junit.jupiter:junit-jupiter-api")
-        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
         testImplementation("org.springframework.boot:spring-boot-starter-test")
-        testImplementation("com.github.jsonzou:jmockdata")
     }
 
     dependencyManagement {
         dependencies {
-            dependency("ch.qos.logback:logback-classic:$logback_version")
-            dependency("org.influxdb:influxdb-java:$influxdb_version")
             dependency("org.projectlombok:lombok:$lombok_version")
-            dependency("com.github.jsonzou:jmockdata:${jmockdata_version}")
-            dependency("com.hivemq:hivemq-mqtt-client:$hivemq_mqtt_client_version")
+            dependency("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatis_version")
+            dependency("com.alibaba.cola:cola-component-catchlog-starter:$cola_version")
+            dependency("com.alibaba.cola:cola-component-dto:$cola_version")
+            dependency("com.alibaba.cola:cola-component-domain-starter:$cola_version")
+            dependency("com.alibaba.cola:cola-component-exception:$cola_version")
+            dependency("javax.el:javax.el-api:$javax_el_version")
+            dependency("org.glassfish.web:javax.el:$glassfish_version")
+            dependency("org.apache.commons:commons-lang3:$commons_lang3_version")
+            dependency("commons-codec:commons-codec:$commons_codec_version")
             dependency("com.alibaba:fastjson:$fastjson_version")
-            dependency("org.influxdb:influxdb-java:$influxdb_version")
-            dependency("com.fasterxml.jackson.core:jackson-core:$jackson_version")
-            dependency("com.fasterxml.jackson.core:jackson-databind:$jackson_version")
-            dependency("com.fasterxml.jackson.core:jackson-annotations:$jackson_version")
         }
     }
 

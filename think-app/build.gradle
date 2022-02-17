@@ -4,8 +4,8 @@ plugins {
 dependencies {
     api project(':think-client')
     api project(':think-infrastructure')
-    api 'com.alibaba.cola:cola-component-catchlog-starter:4.0.0'
-    api 'org.hibernate.validator:hibernate-validator:6.1.6.Final'
-    api 'javax.el:javax.el-api:3.0.0'
-    api 'org.glassfish.web:javax.el:2.2.6'
+    api("com.alibaba.cola:cola-component-catchlog-starter")
+    api("org.hibernate.validator:hibernate-validator")
+    api("javax.el:javax.el-api")
+    api("org.glassfish.web:javax.el")
 }
