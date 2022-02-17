@@ -1,0 +1,8 @@
+dependencies {
+    implementation project(':think-controller')
+    implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.3.4.RELEASE'
+    implementation 'org.springframework.boot:spring-boot-starter:2.3.4.RELEASE'
+    runtimeOnly 'com.h2database:h2:1.4.200'
+    testImplementation 'org.springframework.boot:spring-boot-test:2.3.4.RELEASE'
+}

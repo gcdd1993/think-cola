@@ -1,0 +1,11 @@
+plugins {
+    id "java-library"
+}
+dependencies {
+    api project(':think-domain')
+    api 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.1.4'
+    api 'mysql:mysql-connector-java:8.0.21'
+    api 'org.apache.commons:commons-lang3:3.11'
+    api 'com.alibaba:fastjson:1.2.73'
+    api 'org.springframework.boot:spring-boot-starter-test:2.3.4.RELEASE'
+}

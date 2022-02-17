@@ -1,0 +1,81 @@
+import java.text.SimpleDateFormat
+
+plugins {
+    id "io.spring.dependency-management" version "1.0.11.RELEASE" apply false
+    id "org.springframework.boot" version "$springboot_version" apply false
+    id "com.gorylenko.gradle-git-properties" version "2.2.4" apply false
+    id "groovy-gradle-plugin"
+}
+
+def javaVersion = System.getProperty("java.version")
+if (!javaVersion.startsWith("11")) {
+    throw new RuntimeException("Incompatible JRE version: " + javaVersion + ". Use JRE 11 instead.")
+}
+
+subprojects { project ->
+    group "io.github.gcdd1993"
+    version root_version
+
+    apply plugin: "java"
+    apply plugin: "idea"
+    apply plugin: "io.spring.dependency-management"
+    apply plugin: "org.springframework.boot"
+
+    java {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+
+    jar {
+        enabled = true
+        manifest {
+            attributes(
+                    "Implementation-Title": project.name,
+                    "Implementation-Version": project.version,
+                    "Built-By": System.properties["user.name"],
+                    "Build-Timestamp": new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ").format(new Date()),
+                    "Created-By": "Gradle ${gradle.gradleVersion}",
+                    "Build-Jdk": "${System.properties["java.version"]} (${System.properties["java.vendor"]} ${System.properties["java.vm.version"]})",
+                    "Build-OS": "${System.properties["os.name"]} ${System.properties["os.arch"]} ${System.properties["os.version"]}"
+            )
+        }
+    }
+
+    dependencies {
+        compileOnly("org.projectlombok:lombok")
+        annotationProcessor("org.projectlombok:lombok")
+        annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+        testImplementation("org.junit.jupiter:junit-jupiter-api")
+        testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+        testImplementation("org.springframework.boot:spring-boot-starter-test")
+        testImplementation("com.github.jsonzou:jmockdata")
+    }
+
+    dependencyManagement {
+        dependencies {
+            dependency("ch.qos.logback:logback-classic:$logback_version")
+            dependency("org.influxdb:influxdb-java:$influxdb_version")
+            dependency("org.projectlombok:lombok:$lombok_version")
+            dependency("com.github.jsonzou:jmockdata:${jmockdata_version}")
+            dependency("com.hivemq:hivemq-mqtt-client:$hivemq_mqtt_client_version")
+            dependency("com.alibaba:fastjson:$fastjson_version")
+            dependency("org.influxdb:influxdb-java:$influxdb_version")
+            dependency("com.fasterxml.jackson.core:jackson-core:$jackson_version")
+            dependency("com.fasterxml.jackson.core:jackson-databind:$jackson_version")
+            dependency("com.fasterxml.jackson.core:jackson-annotations:$jackson_version")
+        }
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
+
+    javadoc {
+        options.encoding = 'UTF-8'
+    }
+
+}

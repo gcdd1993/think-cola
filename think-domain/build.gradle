@@ -1,0 +1,11 @@
+plugins {
+    id "java-library"
+}
+dependencies {
+    api project(':think-client')
+    api 'com.alibaba.cola:cola-component-domain-starter:4.0.0'
+    api 'com.alibaba.cola:cola-component-exception:4.0.0'
+    api 'org.apache.commons:commons-lang3:3.11'
+    api 'commons-codec:commons-codec:1.14'
+    testImplementation 'junit:junit:4.13.1'
+}
